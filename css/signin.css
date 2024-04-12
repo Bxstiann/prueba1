@@ -18,7 +18,7 @@ body
 {
     position: relative;
     width: 380px;
-    height: 420px;
+    height: 800px;
     background: #1c1c1c;
     border-radius: 8px;
     overflow: hidden;
@@ -30,7 +30,7 @@ body
     top: -50%;
     left: -50%;
     width: 380px;
-    height: 420px;
+    height: 800px;
     background: linear-gradient(0deg, transparent,
     transparent,#45f3ff,#45f3ff,#45f3ff);
     z-index: 1;
@@ -44,7 +44,7 @@ body
     top: -50%;
     left: -50%;
     width: 380px;
-    height: 420px;
+    height: 800px;
     background: linear-gradient(0deg, transparent,
     transparent,#45f3ff,#45f3ff,#45f3ff);
     z-index: 1;
@@ -65,7 +65,7 @@ body
     top: -50%;
     left: -50%;
     width: 380px;
-    height: 420px;
+    height: 800px;
     background: linear-gradient(0deg, transparent,
     transparent,#ff2770,#ff2770,#ff2770);
     z-index: 1;
@@ -80,7 +80,7 @@ body
     top: -50%;
     left: -50%;
     width: 380px;
-    height: 420px;
+    height: 800px;
     background: linear-gradient(0deg, transparent,
     transparent,#ff2770,#ff2770,#ff2770);
     z-index: 1;
