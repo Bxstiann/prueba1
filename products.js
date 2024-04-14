@@ -58,8 +58,6 @@ const addCarrito = e =>{
 e.stopPropagation()
 }
 
-
-
 const setCarrito = item => {
 	//console.log(objeto)
 	const producto = {
