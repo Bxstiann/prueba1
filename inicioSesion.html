@@ -24,12 +24,28 @@
                 <i></i>
             </div>
             <div class="links">
-                <a href="#">¿Olvidó la contraseña?</a>
                 <a href="registro.html">Crear Usuario</a>
             </div>
-            <a class="buttonIngresar" href="index.html">Ingresar</a>
+            <button type="button" class="buttonIngresar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Ingresar
+            </button>
         </form>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Se ha iniciado sesión correctamente.</h1>
+                </div>
+                <div class="modal-footer">
+                    <a href="index.html"><button type="button" class="btn btn-primary">Ir a inicio</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
