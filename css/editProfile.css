@@ -18,7 +18,7 @@ body
 {
     position: relative;
     width: 380px;
-    height: 600px;
+    height: 750px;
     background: #1c1c1c;
     border-radius: 8px;
     overflow: hidden;
@@ -199,7 +199,7 @@ body
     cursor: pointer;
     font-size: 0.9em;
     border-radius: 4px;
-    font-weight: 600;
+    font-weight: 750;
     width: 100px;
     margin-top: 10px;
 }
