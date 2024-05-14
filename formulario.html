@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Datos Personales</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #240f03;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+    justify-items: center;
+    color: #bd7a22;
+    border-radius: 1px 1px solid #0000;
+    background-color: #bd7a22;
+    padding: 10px 40px 20px 20px;
+    border-radius: 10px;
+
+    
+    }
+    .formulario-container {
+      max-width: 400px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      justify-items: center;
+    }
+
+    .textoBlanco {
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      
+    }
+  </style>
+
+</head>
+<body>
+<div class="container" >
+  <h1 class="textoBlanco">Formulario de envío</h1>
+    
+  <form id="formulario">
+    <label for="nombre" class="textoBlanco">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required><br>
+
+    <label for="apellido" class="textoBlanco">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required><br>
+
+    <label for="telefono" class="textoBlanco">Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono" required><br>
+
+    <label for="direccion" class="textoBlanco">Dirección:</label>
+    <input type="text" id="direccion" name="direccion" required><br>
+
+    <label for="correo" class="textoBlanco">Correo electrónico:</label>
+    <input type="email" id="correo" name="correo" required><br>
+
+    <a href="index.html"><button type="button" class="btn btn-primary">Enviar</button></a>
+  </form>
+</div>
+  <script>
+    document.getElementById('formulario').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evitar que se envíe el formulario automáticamente
+      
+      // Obtener los valores de los campos
+      let nombre = document.getElementById('nombre').value;
+      let apellido = document.getElementById('apellido').value;
+      let telefono = document.getElementById('telefono').value;
+      let direccion = document.getElementById('direccion').value;
+      let correo = document.getElementById('correo').value;
+
+      // Validar que no haya campos vacíos
+      if (nombre === '' || apellido === '' || telefono === '' || direccion === '' || correo === '') {
+        alert('Por favor, complete todos los campos.');
+        return;
+      }
+
+      // Validar que el teléfono sea un número
+      if (isNaN(telefono)) {
+        alert('El teléfono debe ser un número.');
+        return;
+      }
+
+      // Enviar los datos (aquí puedes implementar el envío a tu backend o hacer lo que necesites con los datos)
+      enviarDatos(nombre, apellido, telefono, direccion, correo);
+    });
+
+    function enviarDatos(nombre, apellido, telefono, direccion, correo) {
+      // Aquí puedes enviar los datos a tu backend usando fetch() u otra técnica
+      console.log('Nombre:', nombre);
+      console.log('Apellido:', apellido);
+      console.log('Teléfono:', telefono);
+      console.log('Dirección:', direccion);
+      console.log('Correo electrónico:', correo);
+    }
+  </script>
+</body>
+</html>
