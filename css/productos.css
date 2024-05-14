@@ -1,0 +1,46 @@
+.header{
+    margin-bottom: 4rem;
+    background-color: white;
+    border-bottom: 1px solid black;
+}
+.vistaCarrito{
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.producVista{
+    background-color: white;
+    display:grid;
+    margin: absolute;
+    padding: absolute 30px;
+    border-radius: 30px;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+.botonBusqueda:hover{
+    background-color: #23242a;
+    color:white;
+}
+.space {
+    margin:30px;
+    width: 5%;
+    height: 4rem;
+
+}
+body {
+    background-color: #240f03;
+  }
+  .navbar-custom {
+    background-color: #bd7a22;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  .navbar-custom .navbar-nav .nav-link,
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-item .nav-link {
+    color: black;
+  }
