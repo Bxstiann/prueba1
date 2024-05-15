@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Datos Personales</title>
@@ -16,16 +18,18 @@
       align-items: center;
       min-height: 100vh;
     }
-    .container {
-    justify-items: center;
-    color: #bd7a22;
-    border-radius: 1px 1px solid #0000;
-    background-color: #bd7a22;
-    padding: 10px 40px 20px 20px;
-    border-radius: 10px;
 
-    
+    .container {
+      justify-items: center;
+      color: #bd7a22;
+      border-radius: 1px 1px solid #0000;
+      background-color: #bd7a22;
+      padding: 10px 40px 20px 20px;
+      border-radius: 10px;
+
+
     }
+
     .formulario-container {
       max-width: 400px;
       padding: 20px;
@@ -70,38 +74,115 @@
 
     button:hover {
       background-color: #0056b3;
-      
+
+    }
+    #ruletaPokemon{
+      align-items: center;
     }
   </style>
 
 </head>
+
 <body>
-<div class="container" >
-  <h1 class="textoBlanco">Formulario de envío</h1>
-    
-  <form id="formulario">
-    <label for="nombre" class="textoBlanco">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required><br>
+  <div class="container">
+    <h1 class="textoBlanco">Formulario de envío</h1>
 
-    <label for="apellido" class="textoBlanco">Apellido:</label>
-    <input type="text" id="apellido" name="apellido" required><br>
+    <form id="formulario">
+      <label for="nombre" class="textoBlanco">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required><br>
 
-    <label for="telefono" class="textoBlanco">Teléfono:</label>
-    <input type="tel" id="telefono" name="telefono" required><br>
+      <label for="apellido" class="textoBlanco">Apellido:</label>
+      <input type="text" id="apellido" name="apellido" required><br>
 
-    <label for="direccion" class="textoBlanco">Dirección:</label>
-    <input type="text" id="direccion" name="direccion" required><br>
+      <label for="telefono" class="textoBlanco">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" required><br>
 
-    <label for="correo" class="textoBlanco">Correo electrónico:</label>
-    <input type="email" id="correo" name="correo" required><br>
+      <label for="direccion" class="textoBlanco">Dirección:</label>
+      <input type="text" id="direccion" name="direccion" required><br>
 
-    <a href="index.html"><button type="button" class="btn btn-primary">Enviar</button></a>
-  </form>
-</div>
+      <label for="correo" class="textoBlanco">Correo electrónico:</label>
+      <input type="email" id="correo" name="correo" required><br>
+
+        <label class="textoBlanco">Pokemón de la semana: <img id="iconoPokemonSemana"></img></label>
+        <button id="ruletaPokemon" type="button" class="btn btn-primary">
+          <img id="iconoPokemon"></img>
+          Ten una chanse de un cupón de descuento!
+        </button>
+
+      <a href="index.html"><button type="button" class="btn btn-primary">Enviar</button></a>
+
+
+    </form>
+  </div>
+
   <script>
-    document.getElementById('formulario').addEventListener('submit', function(event) {
+    let pokemonObtenido
+    let pokemonSemana
+    async function ruleta() {
+      const numeroAlAzar = Math.ceil(Math.random() * 100);
+
+
+      await getPokemonData(numeroAlAzar)
+        .then(function (pokemonData) {
+          pokemonObtenido = pokemonData;
+        })
+        .catch(function (error) {
+          console.log(error); // Manejar cualquier error que pueda ocurrir
+        });
+
+
+      const iconoImg = document.getElementById('iconoPokemon');
+      iconoImg.src = pokemonObtenido.sprites.front_default;
+
+
+      if (pokemonObtenido.id == pokemonSemana.id) {
+        alert("¡Felicitaciones! Has obtenido un cupón de descuento de 10%");
+      }
+    }
+
+    function getPokemonData(pokemonName) {
+      return new Promise(function (resolve, reject) {
+        $.ajax({
+          url: `https://pokeapi.co/api/v2/pokemon/${pokemonName}`,
+          method: 'GET',
+          success: function (data) {
+            var pokemonData = {
+              name: data.name,
+              id: data.id,
+              sprites: data.sprites
+            };
+            resolve(pokemonData); // Resolver la promesa con los datos del Pokémon
+          },
+          error: function (xhr, status, error) {
+            reject("Error al obtener los datos:", error); // Rechazar la promesa en caso de error
+          }
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", async function () {
+      const botonRuleta = document.getElementById("ruletaPokemon");
+      await getPokemonData(4)
+        .then(function (pokemonData) {
+          pokemonSemana = pokemonData;
+        })
+        .catch(function (error) {
+          console.log(error); // Manejar cualquier error que pueda ocurrir
+        });
+
+      const iconoImgSemana = document.getElementById('iconoPokemonSemana');
+      iconoImgSemana.src = pokemonSemana.sprites.front_default;
+
+      botonRuleta.addEventListener("click", function () {
+        ruleta()
+      });
+    });
+
+
+
+    document.getElementById('formulario').addEventListener('submit', function (event) {
       event.preventDefault(); // Evitar que se envíe el formulario automáticamente
-      
+
       // Obtener los valores de los campos
       let nombre = document.getElementById('nombre').value;
       let apellido = document.getElementById('apellido').value;
@@ -135,4 +216,5 @@
     }
   </script>
 </body>
+
 </html>
